@@ -7,12 +7,13 @@ const clean = require('gulp-clean')
 
 const sourcePaths = {
   sassSource : 'src/scss/*.scss',
-  htmlSource : 'src/*.html'
+  htmlSource : 'src/*.html',
+  jsSource : 'src/js/*.js'
 }
 const appPath ={
   root: 'app/',
   css : 'app/css',
-  js : 'app/js'
+  js : 'app/js/'
 }
 
 gulp.task('sass', () => {
@@ -21,6 +22,16 @@ gulp.task('sass', () => {
     .pipe(sass({outputStyle: 'expanded'}).on('error', sass.logError))
     .pipe(gulp.dest(appPath.css));
 });
+
+gulp.task('scripts', ['clean-scripts'], () => {
+  gulp.src(sourcePaths.jsSource)
+    .pipe(gulp.dest(appPath.js))
+})
+
+gulp.task('clean-scripts', () => {
+  return gulp.src(appPath.js + '/*.js', {read:false, force: true})
+    .pipe(clean())
+})
 
 gulp.task('clean-html', () => {
   return gulp.src(appPath.root + '/*.html', {read:false, force: true})
@@ -40,9 +51,10 @@ gulp.task('serve', ['sass'], () => {
   })
 });
 
-gulp.task('watch', ['serve', 'sass', 'copy', 'clean-html'], () => {
+gulp.task('watch', ['serve', 'sass', 'copy', 'clean-html', 'scripts', 'clean-scripts'], () => {
   gulp.watch([sourcePaths.sassSource], ['sass']);
   gulp.watch([sourcePaths.htmlSource], ['copy']);
+  gulp.watch([sourcePaths.jsSource], ['scripts']);
 });
 
 gulp.task('default', ['watch']);

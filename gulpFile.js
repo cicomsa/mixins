@@ -3,6 +3,7 @@ const sass = require('gulp-sass');
 const browserSync = require('browser-sync');
 const reload = browserSync.reload;
 const autoprefixer = require('gulp-autoprefixer');
+const browserify = require('gulp-browserify')
 const clean = require('gulp-clean')
 const concat = require('gulp-concat')
 
@@ -27,6 +28,7 @@ gulp.task('sass', () => {
 gulp.task('scripts', ['clean-scripts'], () => {
   gulp.src(sourcePaths.jsSource)
     .pipe(concat('main.js'))
+    .pipe(browserify())
     .pipe(gulp.dest(appPath.js))
 
 })

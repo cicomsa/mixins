@@ -4,11 +4,17 @@
   "main": "index.js",
   "license": "MIT",
   "devDependencies": {
+    "bootstrap": "4.1.1",
     "browser-sync": "^2.24.4",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^5.0.0",
+    "gulp-browserify": "^0.5.1",
     "gulp-clean": "^0.4.0",
     "gulp-concat": "^2.6.1",
-    "gulp-sass": "^4.0.1"
-  }
+    "gulp-sass": "^4.0.1",
+    "jquery": "3.3.1",
+    "mustache": "^2.3.0",
+    "popper.js": "^1.14.3"
+  },
+  "dependencies": {}
 }

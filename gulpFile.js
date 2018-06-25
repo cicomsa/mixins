@@ -16,7 +16,8 @@ const sourcePaths = {
 const appPath ={
   root: 'app/',
   css : 'app/css',
-  js : 'app/js/'
+  js : 'app/js/',
+  fonts : 'app/fonts'
 }
 
 gulp.task('sass', () => {
@@ -30,6 +31,11 @@ gulp.task('sass', () => {
       .pipe(concat('app.css'))
       .pipe(gulp.dest(appPath.css));
 });
+
+// gulp.task('moveFonts', () => {
+//   gulp.src('./node-modules/bootstrap/dist/fonts/*.{eot,svg,ttf,woff,woff2}')
+//   .pipe(gulp.dest(appPath.fonts))
+// 
 
 gulp.task('scripts', ['clean-scripts'], () => {
   gulp.src(sourcePaths.jsSource)

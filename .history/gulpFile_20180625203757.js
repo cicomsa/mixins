@@ -6,7 +6,7 @@ const autoprefixer = require('gulp-autoprefixer');
 const browserify = require('gulp-browserify')
 const clean = require('gulp-clean')
 const concat = require('gulp-concat')
-const merge = require('merge-stream')
+const merge = requre('merge-stream')
 
 const sourcePaths = {
   sassSource : 'src/scss/*.scss',
@@ -26,7 +26,7 @@ gulp.task('sass', () => {
     .pipe(autoprefixer())
     .pipe(sass({outputStyle: 'expanded'}).on('error', sass.logError))
 
-    return merge(bootstrapCSS, sassFiles)
+    return merge(sassFiles, bootstrapCSS)
       .pipe(concat('app.css'))
       .pipe(gulp.dest(appPath.css));
 });

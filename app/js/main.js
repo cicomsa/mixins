@@ -17468,7 +17468,7 @@ jQuery(document).ready(function() {
 });
 
 jQuery(document).ready(function() {
-    alert("me");
+    console.log("me");
 });
 
 }).call(this,typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})

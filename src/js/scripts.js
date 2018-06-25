@@ -7,5 +7,5 @@ jQuery(document).ready(function() {
 });
 
 jQuery(document).ready(function() {
-    alert("me");
+    console.log("me");
 });

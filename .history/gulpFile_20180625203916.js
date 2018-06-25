@@ -26,7 +26,7 @@ gulp.task('sass', () => {
     .pipe(autoprefixer())
     .pipe(sass({outputStyle: 'expanded'}).on('error', sass.logError))
 
-    return merge(bootstrapCSS, sassFiles)
+    return merge(sassFiles, )
       .pipe(concat('app.css'))
       .pipe(gulp.dest(appPath.css));
 });

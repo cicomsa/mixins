@@ -7,17 +7,21 @@ const browserify = require('gulp-browserify')
 const clean = require('gulp-clean')
 const concat = require('gulp-concat')
 const merge = require('merge-stream')
+const newer = require('gulp-newer');
+const imagemin =require('gulp-imagemin');
 
 const sourcePaths = {
   sassSource : 'src/scss/*.scss',
   htmlSource : 'src/*.html',
-  jsSource : 'src/js/*.js'
+  jsSource : 'src/js/*.js',
+  imgSource: 'src/img/**'
 }
 const appPath ={
   root: 'app/',
   css : 'app/css',
   js : 'app/js/',
-  fonts : 'app/fonts'
+  fonts : 'app/fonts',
+  img : 'app/img'
 }
 
 gulp.task('sass', () => {
@@ -45,6 +49,13 @@ gulp.task('scripts', ['clean-scripts'], () => {
 
 })
 
+gulp.task('images', () => {
+  return gulp.src(sourcePaths.imgSource)
+    .pipe(newer(appPath.img))
+    .pipe(imagemin())
+    .pipe(gulp.dest(appPath.img));
+});
+
 gulp.task('clean-scripts', () => {
   return gulp.src(appPath.js + '/*.js', {read:false, force: true})
     .pipe(clean())
@@ -60,6 +71,8 @@ gulp.task('copy', ['clean-html'], () => {
     .pipe(gulp.dest(appPath.root))
 });
 
+
+
 gulp.task('serve', ['sass'], () => {
   browserSync.init([appPath.css + '/*.css', appPath.root + '/*.html', appPath.js + '/*.js'], {
     server: {
@@ -68,7 +81,7 @@ gulp.task('serve', ['sass'], () => {
   })
 });
 
-gulp.task('watch', ['serve', 'sass', 'copy', 'clean-html', 'scripts', 'clean-scripts'], () => {
+gulp.task('watch', ['serve', 'sass', 'copy', 'clean-html', 'scripts', 'clean-scripts', 'images'], () => {
   gulp.watch([sourcePaths.sassSource], ['sass']);
   gulp.watch([sourcePaths.htmlSource], ['copy']);
   gulp.watch([sourcePaths.jsSource], ['scripts']);

@@ -1,11 +1,13 @@
 global.jQuery = require('jquery');
 bootstrap = require('bootstrap');
-mustache = require('mustache');
+Mustache = require('mustache');
 
-jQuery(document).ready(function() {
-    alert("hello");
-});
+jQuery(document).ready(function($) {
+    let jqxhr = $.getJSON('data.json', function() {
 
-jQuery(document).ready(function() {
-    console.log("me");
+    }).done(function(data) {
+        let template = $('#template').html();
+        let showTemplate = Mustache.render(template, data);
+        $('#gallery').html(showTemplate);
+    })
 });

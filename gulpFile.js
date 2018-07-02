@@ -36,10 +36,11 @@ gulp.task('sass', () => {
       .pipe(gulp.dest(appPath.css));
 });
 
-// gulp.task('moveFonts', () => {
-//   gulp.src('./node-modules/bootstrap/dist/fonts/*.{eot,svg,ttf,woff,woff2}')
-//   .pipe(gulp.dest(appPath.fonts))
-// 
+gulp.task('moveFonts', function() {
+  gulp.src('./node_modules/bootstrap/dist/fonts/*.{eot,svg,ttf,woff,woff2}')
+      .pipe(gulp.dest(appPath.fonts))
+});
+
 
 gulp.task('scripts', ['clean-scripts'], () => {
   gulp.src(sourcePaths.jsSource)
@@ -81,7 +82,7 @@ gulp.task('serve', ['sass'], () => {
   })
 });
 
-gulp.task('watch', ['serve', 'sass', 'copy', 'clean-html', 'scripts', 'clean-scripts', 'images'], () => {
+gulp.task('watch', ['serve', 'sass', 'copy', 'clean-html', 'scripts', 'clean-scripts', 'images', 'moveFonts'], () => {
   gulp.watch([sourcePaths.sassSource], ['sass']);
   gulp.watch([sourcePaths.htmlSource], ['copy']);
   gulp.watch([sourcePaths.jsSource], ['scripts']);

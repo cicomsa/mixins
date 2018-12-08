@@ -1,0 +1,23 @@
+@mixin header(
+  $height: 60px,
+  $background-color: red,
+  $position: sticky,
+  $top: 0,
+  $left: 0,
+  $right: 0
+) {
+  height: $height;
+  background-color: $background-color;
+  position: $position;
+  top: $top;
+  left: $left;
+  right: $right;
+}
+
+.header {
+  @include header;
+
+  &--green {
+    @include header($background-color: green);
+  }
+}

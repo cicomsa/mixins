@@ -1,10 +1,11 @@
-@mixin header(
+@mixin headFoot(
   $height: 60px,
   $background-color: red,
-  $position: sticky,
-  $top: 0,
+  $position: absolute,
+  $top: auto,
   $left: 0,
-  $right: 0
+  $right: 0,
+  $bottom: auto
 ) {
   height: $height;
   background-color: $background-color;
@@ -12,12 +13,13 @@
   top: $top;
   left: $left;
   right: $right;
+  bottom: $bottom;
 }
 
 .header {
-  @include header;
+  @include headFoot($position: sticky, $top: 0);
+}
 
-  &--green {
-    @include header($background-color: green);
-  }
+.footer {
+  @include headFoot($background-color: green, $bottom: 0);
 }

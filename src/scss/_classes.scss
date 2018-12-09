@@ -1,0 +1,40 @@
+// wrappers
+.wrapper-header {
+  @include wrapper($position: fixed, $top: 0, $height: $header-height);
+  @include flex;
+}
+
+.wrapper-footer {
+  @include wrapper($background-color: green, $bottom: 0);
+  @include flex;
+}
+
+.wrapper-main {
+  @include wrapper(
+    $top: $header-height,
+    $background-color: orange,
+    $height: $main-height
+  );
+  @include flex;
+}
+
+//inside wrapper container
+.container {
+  @include insideWrapper;
+  &--main {
+    @include insideWrapper($background-color: blue);
+  }
+  &--footer {
+    @include insideWrapper($background-color: yellow);
+  }
+}
+
+//containers content
+.content {
+  @include insideWrapper;
+  @include flex($justify-content: space-around);
+}
+
+p {
+  @include p;
+}

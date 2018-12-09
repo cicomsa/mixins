@@ -1,0 +1,15 @@
+@mixin wrapper(
+  $height: $header-height,
+  $background-color: red,
+  $position: fixed,
+  $top: auto,
+  $bottom: auto,
+  $width: 100%
+) {
+  height: $height;
+  background-color: $background-color;
+  position: $position;
+  top: $top;
+  bottom: $bottom;
+  width: $width;
+}

@@ -9,11 +9,3 @@
   background-color: $background-color;
   max-width: $max-width;
 }
-
-.container {
-  @include insideWrapper;
-}
-
-.content {
-  @include insideWrapper;
-}

@@ -3,11 +3,3 @@
   align-items: $align-items;
   justify-content: $justify-content;
 }
-
-.header {
-  @include flex;
-}
-
-.content {
-  @include flex($justify-content: space-around);
-}

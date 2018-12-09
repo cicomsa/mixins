@@ -1,0 +1,7 @@
+@mixin p($color: white) {
+  color: $color;
+}
+
+p {
+  @include p;
+}

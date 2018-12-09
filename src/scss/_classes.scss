@@ -1,6 +1,6 @@
 // wrappers
 .wrapper-header {
-  @include wrapper($position: fixed, $top: 0, $height: $header-height);
+  @include wrapper($top: 0, $height: $header-height);
   @include flex;
 }
 
@@ -22,17 +22,17 @@
 .container {
   @include insideWrapper;
   &--main {
-    @include insideWrapper($background-color: blue);
+    background-color: blue;
   }
   &--footer {
-    @include insideWrapper($background-color: yellow);
+    background-color: yellow;
   }
 }
 
 //containers content
 .content {
-  @include insideWrapper;
   @include flex($justify-content: space-around);
+  height: 100%;
 }
 
 p {

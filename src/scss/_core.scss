@@ -4,6 +4,7 @@
   box-sizing: border-box;
 }
 
-$header-height: 60px;
 $footer-height: 40px;
-$main-height: calc(100% - 120px);
+$header-height: 60px;
+// 100px = header height + footer height
+$main-height: calc(100% - 100px);

@@ -1,26 +1,7 @@
-// wrappers
-.wrapper-header {
-  @include wrapper($top: 0, $height: $header-height);
-  @include flex;
-}
-
-.wrapper-footer {
-  @include wrapper($background-color: green, $bottom: 0);
-  @include flex;
-}
-
-.wrapper-main {
-  @include wrapper(
-    $top: $header-height,
-    $background-color: orange,
-    $height: $main-height
-  );
-  @include flex;
-}
-
 //inside wrapper container
 .container {
   @include insideWrapper;
+  
   &--main {
     background-color: blue;
   }
@@ -37,4 +18,28 @@
 
 p {
   @include p;
+}
+
+// wrappers
+.wrapper-header {
+  @include wrapper($height: $header-height);
+  @include flex;
+}
+
+.wrapper-footer {
+  @include wrapper(
+    $height: $footer-height,
+    $background-color: green,
+    $bottom: 0
+  );
+  @include flex;
+}
+
+.wrapper-main {
+  @include wrapper(
+    $top: $header-height,
+    $background-color: orange,
+    $height: $main-height
+  );
+  @include flex;
 }

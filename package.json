@@ -19,5 +19,8 @@
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^3.0.0",
     "merge-stream": "^1.0.1"
+  },
+  "resolutions": {
+    "js-yaml": "3.13.1"
   }
 }
